@@ -1,33 +1,37 @@
 <?php
-
 require('tools.php');
+require('Form.php');
+use DWA\Form;
 
-// Get the tab value
-if (isset($_GET['tab'])) {
-  $tab = $_GET['tab'];
+$form = new Form($_GET);
+
+$tab = $form->get('tab', '');
+$partySize = $form->get('partySize', '');
+$quality = $form->get('quality', '');
+$roundUp = $form->isChosen('roundUp');
+$errors = false;
+
+if ($form->isSubmitted()) {
+
+  $errors = $form->validate([
+    'tab' => 'required|min:0',
+    'partySize' => 'required|min:1',
+  ]);
+
+  $tab = floatval($tab);
+  $partySize = intval($partySize);
+  $tipFactor = 1.18;
+
+  if ($quality == 'bad') {
+    $tipFactor = 1.14;
+  } elseif ($quality == 'excellent') {
+    $tipFactor = 1.22;
+  }
+
+  $amount = $tab*$tipFactor/$partySize;
+  if ($roundUp == true) {
+    $amount = ceil($amount);
+  } else {
+    $amount = round($amount, 2);
+  }
 }
-else {
-  $tab = '';
-}
-// Get the tip percentage
-if (isset($_GET['tip'])) {
-  $tip = $_GET['tip'];
-}
-else {
-  $tip = null;
-}
-// Get the split
-if (isset($_GET['split'])) {
-  $split = $_GET['split'];
-}
-else {
-  $split = null;
-}
-// Get the qaulity
-if (isset($_GET['quality'])) {
-  $quality = $_GET['quality'];
-}
-else {
-  $quality = null;
-}
-dump($_GET);
