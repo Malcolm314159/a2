@@ -13,13 +13,13 @@
 
     <form method='get' action='index.php' class='form-horizontal'>
       <div><!--get the tab-->
-        <label for='tab'>How much is the tab?* $</label>
-        <input type='number' name='tab' id='tab' step="0.01" value='<?=$tab?>'>
+        <label for='tab'>How much is the tab? $</label>
+        <input type='number' name='tab' id='tab' min='0' step="0.01" value='<?=$tab?>'>
         <div class='text-warning'>Required</div>
       </div>
       <div><!--get the party size-->
-        <label for='partySize'>Split amongst how many?*</label>
-        <input type='number' name='partySize' id='partySize' value='<?=$partySize?>'>
+        <label for='partySize'>Split amongst how many? </label>
+        <input type='number' name='partySize' id='partySize' min='1' value='<?=$partySize?>'>
         <div class='text-warning'>Required</div>
       </div>
       <div><!--get the service quality-->

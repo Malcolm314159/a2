@@ -162,12 +162,12 @@ class Form {
 
         $language = [
             'alphaNumeric' => ' can only contain letters or numbers.',
-            'alpha' => ' can only contain letters',
-            'numeric' => ' can only contain numbers',
+            'alpha' => ' can only contain letters.',
+            'numeric' => ' can only contain numbers.',
             'required' => ' is required.',
             'email' => ' is not a valid email address.',
-            'min' => ' has to be greater than or equal to '.$parameter,
-            'max' => ' has to be less than '.$parameter,
+            'min' => ' has to be greater than or equal to '.$parameter.'.',
+            'max' => ' has to be less than '.$parameter.'.',
         ];
 
         # If a message for the rule was found, use that, otherwise default to " has an error"
