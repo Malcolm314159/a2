@@ -48,7 +48,7 @@
 
   <?php elseif($form->isSubmitted()): ?>
     <div class='alert alert-success'>
-      Everyone owes <strong><?=$amount?> dollars.</strong>
+      Each person owes <strong>$<?=$amount?>.</strong>
     </div>
   <?php endif; ?>
 </body>
